@@ -1,0 +1,855 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/wikistyle.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>Vim - </title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Linux">Linux</a>&nbsp;»&nbsp;Vim</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">Vim</div>
+  <div id="content">
+  <h1 id="vim">Vim</h1>
+<h3 id="the-most-useful-command">The most useful command</h3>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>inster命令,在vim中可能任意字符都有作用</td>
+</tr>
+<tr>
+<td><strong>u</strong></td>
+<td>撤消最后一次修改，U 撤消当前行的所有修改</td>
+</tr>
+<tr>
+<td><strong>:e!</strong></td>
+<td>放弃所有修改，从上次保存文件开始再编辑</td>
+</tr>
+<tr>
+<td>:r filename</td>
+<td>读入一个文件内容，写道当前工作文件中</td>
+</tr>
+<tr>
+<td>:w newfilename</td>
+<td>将当前文件内容写道新文件中</td>
+</tr>
+<tr>
+<td>:!ls</td>
+<td>在编辑过程中执行shell命令ls</td>
+</tr>
+<tr>
+<td><strong>/text</strong></td>
+<td>在文件中向前查找 <strong><em>?text</em></strong> 向后</td>
+</tr>
+<tr>
+<td><strong>n</strong></td>
+<td>下一个</td>
+</tr>
+<tr>
+<td><strong>:set hls</strong></td>
+<td>打开高亮  <strong><em>:set nohls</em></strong> 关闭</td>
+</tr>
+<tr>
+<td>:set nohls</td>
+<td>关闭高亮</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>重复最后的 :s 命令</td>
+</tr>
+<tr>
+<td>ctrl+g</td>
+<td>显示文件名、当前行号、文件的总行数和位置的百分比</td>
+</tr>
+<tr>
+<td>ctrl+v</td>
+<td>可视块</td>
+</tr>
+<tr>
+<td><strong>:set number</strong></td>
+<td>显示行数 <strong><em>:set nonumber</em></strong> 取消显示行数</td>
+</tr>
+<tr>
+<td>:s/Fedora/Redhat</td>
+<td>将Fedora字符替换为Redhat(只替换在光标所在的行)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="all-of-the-commands">All of the  Commands</h3>
+<hr />
+<h4 id="_1">基础</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:e filename</td>
+<td>Open filename for edition</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>Save file</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>Exit Vim</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>Quit without saving</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>Write file (if changes has been made) and exit</td>
+</tr>
+<tr>
+<td>:sav filename</td>
+<td>Saves file as filename</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Repeats the last change made in normal mode</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>Repeats 5 times the last change made in normal mode</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_2">在文件中移动</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k or Up</td>
+<td>Arrow   move the cursor up one line</td>
+</tr>
+<tr>
+<td>j or Down</td>
+<td>Arrow     move the cursor down one line</td>
+</tr>
+<tr>
+<td>e</td>
+<td>move the cursor to the end of the word</td>
+</tr>
+<tr>
+<td>b</td>
+<td>move the cursor to the begining of the word</td>
+</tr>
+<tr>
+<td>0</td>
+<td>move the cursor to the begining of the line</td>
+</tr>
+<tr>
+<td>G</td>
+<td>move the cursor to the end of the line</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>move the cursor to the begining of the file</td>
+</tr>
+<tr>
+<td>L</td>
+<td>move the cursor to the end of the file</td>
+</tr>
+<tr>
+<td>20</td>
+<td>move cursor to column 20.</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Move cursor to matching parenthesis</td>
+</tr>
+<tr>
+<td>[[</td>
+<td>Jump to function start</td>
+</tr>
+<tr>
+<td>[{</td>
+<td>Jump to block start</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_3">剪切、复制和粘贴</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>Copy the selected text to clipboard</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Paste clipboard contents</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>Cut current line</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>Copy current line</td>
+</tr>
+<tr>
+<td>y$</td>
+<td>Copy to end of line</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Cut to end of line</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_4">搜索</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/word</td>
+<td>Search word from top to bottom</td>
+</tr>
+<tr>
+<td>?word</td>
+<td>Search word from bottom to top</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Search the word under cursor</td>
+</tr>
+<tr>
+<td>/\cstring</td>
+<td>Search STRING or string, case insensitive</td>
+</tr>
+<tr>
+<td>/jo[ha]n</td>
+<td>Search john or joan</td>
+</tr>
+<tr>
+<td>/\&lt; the</td>
+<td>Search the, theatre or then</td>
+</tr>
+<tr>
+<td>/the></td>
+<td>Search the or breathe</td>
+</tr>
+<tr>
+<td>/\&lt; the></td>
+<td>Search the</td>
+</tr>
+<tr>
+<td>/\&lt; ¦.></td>
+<td>Search all words of 4 letters</td>
+</tr>
+<tr>
+<td>/\/</td>
+<td>Search fred but not alfred or frederick</td>
+</tr>
+<tr>
+<td>/fred\</td>
+<td>joe</td>
+</tr>
+<tr>
+<td>/\&lt;\d\d\d\d></td>
+<td>Search exactly 4 digits</td>
+</tr>
+<tr>
+<td>/^\n{3}</td>
+<td>Find 3 empty lines</td>
+</tr>
+<tr>
+<td>:bufdo /searchstr/</td>
+<td>Search in all open files</td>
+</tr>
+<tr>
+<td>bufdo %s/something/somethingelse/g</td>
+<td>Search something in all the open buffers and replace it with somethingelse</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_5">替换</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:%s/old/new/g</td>
+<td>Replace all occurences of old by new in file</td>
+</tr>
+<tr>
+<td>:%s/onward/forward/gi</td>
+<td>Replace onward by forward, case unsensitive</td>
+</tr>
+<tr>
+<td>:%s/old/new/gc</td>
+<td>Replace all occurences with confirmation</td>
+</tr>
+<tr>
+<td>:2,35s/old/new/g</td>
+<td>Replace all occurences between lines 2 and 35</td>
+</tr>
+<tr>
+<td>:5,$s/old/new/g</td>
+<td>Replace all occurences from line 5 to EOF</td>
+</tr>
+<tr>
+<td>:%s/^/hello/g</td>
+<td>Replace the begining of each line by hello</td>
+</tr>
+<tr>
+<td>:%s/$/Harry/g</td>
+<td>Replace the end of each line by Harry</td>
+</tr>
+<tr>
+<td>:%s/onward/forward/gi</td>
+<td>Replace onward by forward, case unsensitive</td>
+</tr>
+<tr>
+<td>:%s/ *$//g</td>
+<td>Delete all white spaces</td>
+</tr>
+<tr>
+<td>:g/string/d</td>
+<td>Delete all lines containing string</td>
+</tr>
+<tr>
+<td>:v/string/d</td>
+<td>Delete all lines containing which didn’t contain string</td>
+</tr>
+<tr>
+<td>:s/Bill/Steve/</td>
+<td>Replace the first occurence of Bill by Steve in current line</td>
+</tr>
+<tr>
+<td>:s/Bill/Steve/g</td>
+<td>Replace Bill by Steve in current line</td>
+</tr>
+<tr>
+<td>:%s/Bill/Steve/g</td>
+<td>Replace Bill by Steve in all the file</td>
+</tr>
+<tr>
+<td>:%s/^M//g</td>
+<td>Delete DOS carriage returns (^M)</td>
+</tr>
+<tr>
+<td>:%s/\r/\r/g</td>
+<td>Transform DOS carriage returns in returns</td>
+</tr>
+<tr>
+<td>:%s#&lt;[^&gt;]+&gt;##g</td>
+<td>Delete HTML tags but keeps text</td>
+</tr>
+<tr>
+<td>:%s/^(.*)\n\1$/\1/</td>
+<td>Delete lines which appears twice</td>
+</tr>
+<tr>
+<td>Ctrl+a</td>
+<td>Increment number under the cursor</td>
+</tr>
+<tr>
+<td>Ctrl+x</td>
+<td>Decrement number under cursor</td>
+</tr>
+<tr>
+<td>ggVGg?</td>
+<td>Change text to Rot13</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">大小写</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vu</td>
+<td>Lowercase line</td>
+</tr>
+<tr>
+<td>VU</td>
+<td>Uppercase line</td>
+</tr>
+<tr>
+<td>g~~</td>
+<td>Invert case</td>
+</tr>
+<tr>
+<td>vEU</td>
+<td>Switch word to uppercase</td>
+</tr>
+<tr>
+<td>vE~</td>
+<td>Modify word case</td>
+</tr>
+<tr>
+<td>ggguG</td>
+<td>Set all text to lowercase</td>
+</tr>
+<tr>
+<td>gggUG</td>
+<td>Set all text to uppercase</td>
+</tr>
+<tr>
+<td>:set ignorecase</td>
+<td>Ignore case in searches</td>
+</tr>
+<tr>
+<td>:set smartcase</td>
+<td>Ignore case in searches excepted if an uppercase letter is used</td>
+</tr>
+<tr>
+<td>:%s/\&lt;./\u&amp;/g</td>
+<td>Sets first letter of each word to uppercase</td>
+</tr>
+<tr>
+<td>:%s/\&lt;./\l&amp;/g</td>
+<td>Sets first letter of each word to lowercase</td>
+</tr>
+<tr>
+<td>:%s/.*/\u&amp;</td>
+<td>Sets first letter of each line to uppercase</td>
+</tr>
+<tr>
+<td>:%s/.*/\l&amp;</td>
+<td>Sets first letter of each line to lowercase</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_7">读写文件</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:1,10 w outfile</td>
+<td>Saves lines 1 to 10 in outfile</td>
+</tr>
+<tr>
+<td>:1,10 w &gt;&gt;</td>
+<td>outfile  Appends lines 1 to 10 to outfile</td>
+</tr>
+<tr>
+<td>:r infile</td>
+<td>Insert the content of infile</td>
+</tr>
+<tr>
+<td>:23r infile</td>
+<td>Insert the content of infile under line 23</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_8">文件浏览器</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:e .</td>
+<td>Open integrated file explorer</td>
+</tr>
+<tr>
+<td>:Sex</td>
+<td>Split window and open integrated file explorer</td>
+</tr>
+<tr>
+<td>:Sex!</td>
+<td>Same as :Sex but split window vertically</td>
+</tr>
+<tr>
+<td>:browse e</td>
+<td>Graphical file explorer</td>
+</tr>
+<tr>
+<td>:ls</td>
+<td>List buffers</td>
+</tr>
+<tr>
+<td>:cd ..</td>
+<td>Move to parent directory</td>
+</tr>
+<tr>
+<td>:args</td>
+<td>List files</td>
+</tr>
+<tr>
+<td>:args *.php</td>
+<td>Open file list</td>
+</tr>
+<tr>
+<td>:grep expression *.php</td>
+<td>Returns a list of .php files contening expression</td>
+</tr>
+<tr>
+<td>gf</td>
+<td>Open file name under cursor</td>
+</tr>
+</tbody>
+</table>
+<h4 id="unix">和 Unix 系统交互</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:!pwd</td>
+<td>Execute the pwd unix command, then returns to Vi</td>
+</tr>
+<tr>
+<td>!!pwd</td>
+<td>Execute the pwd unix command and insert output in file</td>
+</tr>
+<tr>
+<td>:sh</td>
+<td>Temporary returns to Unix</td>
+</tr>
+<tr>
+<td>$exit</td>
+<td>Retourns to Vi</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_9">对齐</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:%!fmt</td>
+<td>Align all lines</td>
+</tr>
+<tr>
+<td>!}fmt</td>
+<td>Align all lines at the current position</td>
+</tr>
+<tr>
+<td>5!!fmt</td>
+<td>Align the next 5 lines</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tabswindows">Tabs/Windows</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:tabnew</td>
+<td>Creates a new tab</td>
+</tr>
+<tr>
+<td>gt</td>
+<td>Show next tab</td>
+</tr>
+<tr>
+<td>:tabfirst</td>
+<td>Show first tab</td>
+</tr>
+<tr>
+<td>:tablast</td>
+<td>Show last tab</td>
+</tr>
+<tr>
+<td>:tabm n(position)</td>
+<td>Rearrange tabs</td>
+</tr>
+<tr>
+<td>:tabdo %s/foo/bar/g</td>
+<td>Execute a command in all tabs</td>
+</tr>
+<tr>
+<td>:tab ball</td>
+<td>Puts all open files in tabs</td>
+</tr>
+<tr>
+<td>:new abc.txt</td>
+<td>Edit abc.txt in new window</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_10">分屏显示</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:e filename</td>
+<td>Edit filename in current window</td>
+</tr>
+<tr>
+<td>:split filename</td>
+<td>Split the window and open filename</td>
+</tr>
+<tr>
+<td>ctrl-w up arrow</td>
+<td>Puts cursor in top window</td>
+</tr>
+<tr>
+<td>ctrl-w ctrl-w</td>
+<td>Puts cursor in next window</td>
+</tr>
+<tr>
+<td>ctrl-w_</td>
+<td>Maximize current window vertically</td>
+</tr>
+<tr>
+<td>ctrl-w</td>
+<td></td>
+</tr>
+<tr>
+<td>ctrl-w=</td>
+<td>Gives the same size to all windows</td>
+</tr>
+<tr>
+<td>10 ctrl-w+</td>
+<td>Add 10 lines to current window</td>
+</tr>
+<tr>
+<td>:vsplit file</td>
+<td>Split window vertically</td>
+</tr>
+<tr>
+<td>:sview file</td>
+<td>Same as :split in readonly mode</td>
+</tr>
+<tr>
+<td>:hide</td>
+<td>Close current window</td>
+</tr>
+<tr>
+<td>:­nly</td>
+<td>Close all windows, excepted current</td>
+</tr>
+<tr>
+<td>:b 2</td>
+<td>Open #2 in this window</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_11">自动完成</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+n Ctrl+p (in insert mode)</td>
+<td>Complete word</td>
+</tr>
+<tr>
+<td>Ctrl+x Ctrl+l</td>
+<td>Complete line</td>
+</tr>
+<tr>
+<td>:set dictionary=dict</td>
+<td>Define dict as a dictionnary</td>
+</tr>
+<tr>
+<td>Ctrl+x Ctrl+k</td>
+<td>Complete with dictionnary</td>
+</tr>
+</tbody>
+</table>
+<h4 id="marks">Marks</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td a-z="a-z">m </td>
+<td a-z="a-z">Marks current position as </td>
+</tr>
+<tr>
+<td a-z="a-z">' </td>
+<td a-z="a-z">Move to position </td>
+</tr>
+<tr>
+<td>''</td>
+<td>Move to previous position</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_12">缩写</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:ab mail mail@provider.org</td>
+<td>Define mail as abbreviation of mail@provider.org</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_13">文本缩进</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:set autoindent</td>
+<td>Turn on auto-indent</td>
+</tr>
+<tr>
+<td>:set smartindent</td>
+<td>Turn on intelligent auto-indent</td>
+</tr>
+<tr>
+<td>:set shiftwidth=4</td>
+<td>Defines 4 spaces as indent size</td>
+</tr>
+<tr>
+<td>ctrl-t, ctrl-d</td>
+<td>Indent/un-indent in insert mode</td>
+</tr>
+<tr>
+<td><strong>&gt;&gt;</strong></td>
+<td>Indent</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>Un-indent</td>
+</tr>
+<tr>
+<td>=%</td>
+<td>Indent the code between parenthesis</td>
+</tr>
+<tr>
+<td>1GVG=</td>
+<td>Indent the whole file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_14">语法高亮</h4>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Commond</th>
+<th>Explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:syntax on</td>
+<td>Turn on syntax highlighting</td>
+</tr>
+<tr>
+<td>:syntax off</td>
+<td>Turn off syntax highlighting</td>
+</tr>
+<tr>
+<td>:set syntax=perl</td>
+<td>Force syntax highlighting</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2015 .
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

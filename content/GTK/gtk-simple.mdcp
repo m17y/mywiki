@@ -1,0 +1,89 @@
+---
+title: "GTK Simple"
+date: 2015-11-05 11:16
+---
+
+
+
+GTK入门
+==============================
+
+####gtk 简单组建：
+-------------
+*example*
+
+	gtk_init (&argc, &argv); ／／初始化
+	target_tbl = gtk_table_new (3, 3, FALSE); //创建容器
+	GtkWidget *device_name = gtk_label_new (_(value)); ／／label
+	／／下拉
+	GtkWidget *combo = gtk_combo_box_text_new();
+	    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),
+                                   "Initial Storage Group");
+	    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),
+                                   "Initial Storage two");
+	／／布局＆将组建塞入窗口
+	gtk_table_attach_defaults(GTK_TABLE(table),device_name,0,1,0,1);
+	gtk_table_attach_defaults(GTK_TABLE(table),combo,1,2,0,1);
+	／／show 窗口
+	gtk_widget_show_all(dialog);
+	
+**important**
+	*SIGNAL*
+	
+	g_signal_connect (G_OBJECT (combo), "changed",G_CALLBACK (group_change),NULL);
+	
+	G_OBJECT (combo) 绑定combo组建
+	"changed"监听组建事件，不同的组建有不同的事件，最好去查下API
+	G_CALLBACK (group_change) 绑定回调函数 changed时激发函数内事件
+		
+**g_signal_connect(instance, detailed_signal, c_handler, data)**
+	
+
+    Api 解释：
+    		Connects a GCallback function to a signal for a particular object.The handler will be called before the default handler of the signal.
+    		instance :the instance to connect to.
+    		detailed_signal :a string of the form "signal-name::detail".
+    		c_handler :the GCallback to connect.
+    		data :data to pass to c_handler calls.
+    		Returns :the handler id
+**TreeView**
+
+	创建：
+	
+	初始化treeview 组建
+	disks_list = gtk_tree_view_new ();
+	....待完成
+	
+	获取TreeView 选择时列表：
+	
+	获得 选中的 列表
+	gtk_tree_selection_get_selected(GTK_TREE_SELECTION(widget), &model, &iter)
+	／／获取 path
+	path = gtk_tree_path_new_from_string (path_str);
+	//根据path获得iter
+        gtk_tree_model_get_iter (model_iter, &iter, path);
+	／／获取列表指定位置的值（0）
+	gtk_tree_model_get(model, &iter, DISKS_COL_DEVICE, &value, 0);
+	／／写入值 制定位置
+	gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                      DISKS_COL_MODEL, "Initial Storage Group", 0);
+	
+ *API*
+> void                gtk_tree_store_set                  (GtkTreeStore *tree_store,  GtkTreeIter *iter, ...);
+> 
+> Sets the value of one or more cells in the row referenced by iter. The variable argument list should contain integer column numbers, each column number followed by the value to be set. The list is terminated by a -1. For example, to set column 0 with type G_TYPE_STRING to "Foo", you would write gtk_tree_store_set (store, iter, 0, "Foo", -1).
+
+> The value will be referenced by the store if it is a G_TYPE_OBJECT, and it will be copied if it is a G_TYPE_STRING or G_TYPE_BOXED.
+
+> tree_store :A GtkTreeStore
+> iter :A valid GtkTreeIter for the row being modified
+> ... :
+> pairs of column number and value, terminated with -1
+
+
+###推荐API 工具
+	devhelp 需要在linux下安装软件 ，方便查看
+	
+*Gnome 官网api*
+	[enter link description here](https://developer.gnome.org/references)
+

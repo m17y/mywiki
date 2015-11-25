@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/wikistyle.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>Django Rest FrameWork - </title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Django">Django</a>&nbsp;»&nbsp;Django Rest FrameWork</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">Django Rest FrameWork</div>
+  <div id="content">
+  <h2 id="django-restful">Django Restful</h2>
+<h3 id="restful">Restful 简介</h3>
+<p><strong><em>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义</em></strong></p>
+<p>一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<p><strong><em>表述性状态转移</em></strong></p>
+<p>REST提出了一些设计概念和准则：</p>
+<p>1.网络上的所有事物都被抽象为资源（resource）；</p>
+<p>2.每个资源对应一个唯一的资源标识（resource identifier）；</p>
+<p>3.通过通用的连接器接口（generic connector interface）对资源进行操作；</p>
+<p>4.对资源的各种操作不会改变资源标识；</p>
+<p>5.所有的操作都是无状态的（stateless）。</p>
+<p><strong><em>资源</em></strong>：</p>
+<blockquote>
+<p>资源是网络上网络上一个实体，可以是一张图片，音乐，文本等
+我们可以用一个URI（统一资源定位符）去指向一个资源以便去访问获取它，这个资源
+所对应的url是特定性的，不予重复</p>
+</blockquote>
+<p><strong><em>表现层</em></strong></p>
+<blockquote>
+<p>我们把资源展现出来的形式叫做“表现成” 比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式也可以用PNG格式表现。</p>
+<p><strong><em>URI</em></strong>只是代表 资源的实体，不代表任何形式
+  比如：有些网址最后的".html"后缀名是不必要的，因为（<strong><em>.html</em></strong>）这个后缀名表示格式，属于"表现层"范畴，</p>
+<p>HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对"表现层"的描述。</p>
+</blockquote>
+<p><strong><em>状态转化</em></strong></p>
+<blockquote>
+<p>在访问网站的时候，我们必定要与服务器有一个互动的过程，而在HTTP通信协议中，所有的状态都要交给服务器来保存（<strong><em>HTTP协议，是一个无状态协议</em></strong>）</p>
+<p>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生"状态转化"（State Transfer）。</p>
+<p>如 HTTP协议中的：</p>
+<div class="hlcode"><pre><span class="n">GET</span><span class="err">用来获取资源，</span>
+
+<span class="n">POST</span><span class="err">用来新建资源（也可以用于更新资源），</span>
+
+<span class="n">PUT</span><span class="err">用来更新资源，</span><span class="n">DELETE</span><span class="err">用来删除资源。</span>
+</pre></div>
+
+
+</blockquote>
+<h3 id="django-restful_1">简单的DJANGO RESTFUL 入门</h3>
+<p><strong><em>Install</em></strong></p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pygments</span>   <span class="err">使用这个包，做代码高亮显示</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="n">httpie</span>     <span class="err">使用</span><span class="n">http</span><span class="err">命令</span> <span class="err">获取</span><span class="n">json</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">curl</span>       <span class="err">使用</span><span class="n">curl</span><span class="err">命令</span><span class="n">post</span><span class="err">资源</span>
+</pre></div>
+
+
+<p><strong><em>Getting started</em></strong></p>
+<p>一：</p>
+<div class="hlcode"><pre><span class="mf">1.</span> <span class="n">django</span><span class="o">-</span><span class="n">admin</span><span class="p">.</span><span class="n">py</span> <span class="n">startproject</span> <span class="n">djangoProject</span>  <span class="err">创建</span><span class="n">django</span><span class="err">项目</span>
+<span class="mf">2.</span> <span class="n">cd</span> <span class="n">djangoProject</span>
+<span class="mf">3.</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">djangoApp</span>     <span class="err">在</span><span class="n">djangoProject</span><span class="err">下创建</span><span class="n">Application</span>
+</pre></div>
+
+
+<p>二：</p>
+<p>在 djangoProject 文件中 找到 seeting.py 文件 添加 rest_framework和 snippets</p>
+<div class="hlcode"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">...</span>
+    <span class="err">&#39;</span><span class="n">rest_framework</span><span class="err">&#39;</span><span class="p">,</span>
+    <span class="err">&#39;</span><span class="n">snippets</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>在djangoProject/urls.py中，将snippets app的url包含进来</p>
+<div class="hlcode"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="n">r</span><span class="sc">&#39;^&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="err">&#39;</span><span class="n">djangoApp</span><span class="p">.</span><span class="n">urls</span><span class="err">&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>三：</p>
+<p>创建model</p>
+<div class="hlcode"><pre><span class="cp"># coding=utf-8</span>
+<span class="n">from</span> <span class="n">django</span><span class="p">.</span><span class="n">db</span> <span class="n">import</span> <span class="n">models</span>
+
+
+<span class="n">class</span> <span class="n">Teacher</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+
+<p>使用python manage.py syncdb 同步数据库</p>
+<p>四：</p>
+<p>创建序列化类</p>
+<p>在djangoApp 中新建文件serializers.py
+并将下面内容拷贝到文件中</p>
+<div class="hlcode"><pre><span class="cp"># coding=utf-8</span>
+
+<span class="n">from</span> <span class="n">restful</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Teacher</span>
+<span class="n">from</span> <span class="n">rest_framework</span> <span class="n">import</span> <span class="n">serializers</span>
+
+
+<span class="n">class</span> <span class="n">TeacherSerializers</span><span class="p">(</span><span class="n">serializers</span><span class="p">.</span><span class="n">ModelSerializer</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">class</span> <span class="n">Meta</span><span class="o">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Teacher</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="err">&#39;</span><span class="n">name</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">email</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">password</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="n">def</span> <span class="n">restore_object</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">None</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">:</span>
+        <span class="n">instance</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="err">&#39;</span><span class="n">name</span><span class="err">&#39;</span><span class="p">]</span>
+        <span class="n">instance</span><span class="p">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="err">&#39;</span><span class="n">email</span><span class="err">&#39;</span><span class="p">]</span>
+        <span class="n">instance</span><span class="p">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="err">&#39;</span><span class="n">password</span><span class="err">&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">attributes</span><span class="p">)</span>
+</pre></div>
+
+
+<blockquote>
+<p>// TODO 为什么去序列化</p>
+</blockquote>
+<p><strong><em>五</em></strong></p>
+<p>创建view.py 视图</p>
+<div class="hlcode"><pre><span class="cp"># coding=utf-8</span>
+<span class="n">from</span> <span class="n">django</span><span class="p">.</span><span class="n">http</span> <span class="n">import</span> <span class="n">HttpResponse</span>
+<span class="n">from</span> <span class="n">django</span><span class="p">.</span><span class="n">views</span><span class="p">.</span><span class="n">decorators</span><span class="p">.</span><span class="n">csrf</span> <span class="n">import</span> <span class="n">csrf_exempt</span>
+<span class="n">from</span> <span class="n">rest_framework</span><span class="p">.</span><span class="n">renderers</span> <span class="n">import</span> <span class="n">JSONRenderer</span>
+<span class="n">from</span> <span class="n">rest_framework</span><span class="p">.</span><span class="n">parsers</span> <span class="n">import</span> <span class="n">JSONParser</span>
+<span class="n">from</span> <span class="n">restful</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Teacher</span>
+<span class="n">from</span> <span class="n">restful</span><span class="p">.</span><span class="n">serializers</span> <span class="n">import</span> <span class="n">TeacherSerializers</span>
+
+
+<span class="n">class</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">HttpResponse</span><span class="p">)</span><span class="o">:</span>
+    <span class="s">&quot;&quot;&quot;</span>
+    <span class="n">An</span> <span class="n">HttpResponse</span> <span class="n">that</span> <span class="n">renders</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">content</span> <span class="n">into</span> <span class="n">JSON</span><span class="p">.</span>
+    <span class="s">&quot;&quot;&quot;</span>
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">JSONRenderer</span><span class="p">().</span><span class="n">render</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="err">&#39;</span><span class="n">content_type</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="err">&#39;</span>
+        <span class="n">super</span><span class="p">(</span><span class="n">JSONResponse</span><span class="p">,</span> <span class="n">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="err">@</span><span class="n">csrf_exempt</span>
+<span class="n">def</span> <span class="n">teacher_list</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="s">&quot;&quot;&quot;</span>
+    <span class="n">List</span> <span class="n">all</span> <span class="n">code</span> <span class="n">snippets</span><span class="p">,</span> <span class="n">or</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">snippet</span><span class="p">.</span>
+    <span class="s">&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="o">:</span>
+        <span class="n">teacher</span> <span class="o">=</span> <span class="n">Teacher</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+        <span class="n">ser</span> <span class="o">=</span> <span class="n">TeacherSerializers</span><span class="p">(</span><span class="n">teacher</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">ser</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">elif</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="o">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">JSONParser</span><span class="p">().</span><span class="n">parse</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">TeacherSerializers</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">serializer</span><span class="p">.</span><span class="n">is_valid</span><span class="p">()</span><span class="o">:</span>
+            <span class="n">serializer</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">serializer</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+        <span class="nl">else:</span>
+            <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">serializer</span><span class="p">.</span><span class="n">errors</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_1">六：</h2>
+<p>修改 django 路由</p>
+<div class="hlcode"><pre><span class="n">url</span><span class="p">(</span><span class="n">r</span><span class="err">&#39;</span><span class="o">^</span><span class="n">teacher</span><span class="o">/</span><span class="p">(</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">teacher_list</span><span class="p">),</span>
+</pre></div>
+
+
+<p>七：</p>
+<p>测试</p>
+<div class="hlcode"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+
+<span class="err">访问</span> <span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1:8000/admin/</span>
+<span class="err">在</span><span class="n">Techer</span><span class="err">中添加数据</span>
+<span class="err">如：</span>
+    <span class="n">name</span><span class="err">：</span><span class="mi">222</span>
+    <span class="n">email</span><span class="err">：</span><span class="n">admin</span><span class="err">@</span><span class="n">qq</span><span class="p">.</span><span class="n">com</span>
+    <span class="n">password</span><span class="err">：</span><span class="mi">111111</span>
+
+<span class="err">保存退出</span>
+
+<span class="err">然后再</span> <span class="err">浏览器中</span> <span class="err">访问</span><span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1：8000/teacher/222</span>
+
+<span class="err">即可获取</span><span class="n">json</span> <span class="err">数据：</span>
+        <span class="p">{</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;222&quot;</span><span class="p">,</span><span class="s">&quot;email&quot;</span><span class="o">:</span><span class="s">&quot;admin@qq.com&quot;</span><span class="p">,</span><span class="s">&quot;password&quot;</span><span class="o">:</span><span class="s">&quot;111111&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<h4 id="_2">参考</h4>
+<p><a href="http://www.django-rest-framework.org/" title="django_restful 官网">http://www.django-rest-framework.org/</a></p>
+<p><a href="http://blog.csdn.net/zhaoyingm/article/details/8531617" title="csdn博客">http://blog.csdn.net/zhaoyingm/article/details/8531617</a></p>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2015 .
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/wikistyle.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>GTK Simple - </title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#GTK">GTK</a>&nbsp;»&nbsp;GTK Simple</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">GTK Simple</div>
+  <div id="content">
+  <h1 id="gtk">GTK入门</h1>
+<h4 id="gtk_1">gtk常用函数：</h4>
+<hr />
+<div class="hlcode"><pre><span class="n">gtk_dialog_new</span> <span class="err">新建窗口构件</span>
+<span class="n">gtk_window_set_title</span> <span class="err">设置</span><span class="n">window</span><span class="o">-&gt;</span><span class="n">title</span>
+<span class="n">gtk_table_attach</span> <span class="err">向格状容器的指定区域中添加控件</span>
+<span class="n">gtk_container_set_border_width</span> <span class="err">设置窗口宽度</span>
+<span class="n">gtk_box_pack_start</span><span class="err">将构件放在顶部或左边</span>
+<span class="n">gtk_dialog_add_buttons</span> <span class="err">添加</span><span class="n">button</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">detailed_signal</span><span class="p">,</span> <span class="n">c_handler</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="err">绑定</span><span class="n">signal</span><span class="err">事件及触发函数</span>
+</pre></div>
+
+
+<p><em>GtkEntry</em></p>
+<div class="hlcode"><pre><span class="n">gtk_entry_new</span> <span class="err">创建行编辑</span>
+<span class="n">gtk_entry_get_text</span> <span class="p">(</span><span class="n">GtkEntry</span> <span class="o">*</span><span class="n">entry</span><span class="p">)</span> <span class="err">获得文本内容</span>
+<span class="n">gtk_entry_set_text</span> <span class="p">(</span><span class="n">GtkEntry</span> <span class="o">*</span><span class="n">entry</span><span class="p">,</span> <span class="k">const</span> <span class="n">gchar</span> <span class="o">*</span><span class="n">text</span><span class="p">)</span> <span class="err">设置行编辑的内容</span>
+<span class="n">gtk_editable_set_editable</span> <span class="p">(</span><span class="n">GtkEditable</span> <span class="o">*</span><span class="n">editable</span><span class="p">,</span> <span class="n">gboolean</span> <span class="n">is_editable</span><span class="p">)</span> <span class="err">设置编辑模式</span>
+<span class="n">gtk_entry_set_visibility</span> <span class="p">(</span><span class="n">GtkEntry</span> <span class="o">*</span><span class="n">entry</span><span class="p">,</span> <span class="n">gboolean</span> <span class="n">visible</span><span class="p">)</span> <span class="err">显示模式</span><span class="p">(</span><span class="err">密码模式</span><span class="p">)</span>
+</pre></div>
+
+
+<p><em>GtkCheckButton</em></p>
+<div class="hlcode"><pre><span class="n">gtk_check_button_new_with_label</span> <span class="p">(</span><span class="k">const</span> <span class="n">gchar</span> <span class="o">*</span><span class="n">label</span><span class="p">)</span> <span class="err">创建带文本内容的复选框</span>
+</pre></div>
+
+
+<p><em>GtkComboBox</em></p>
+<div class="hlcode"><pre><span class="n">gtk_combo_box_new_text</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="err">创建下拉框</span>
+<span class="n">gtk_combo_box_append_text</span> <span class="p">(</span><span class="n">GtkComboBox</span> <span class="o">*</span><span class="n">combo_box</span><span class="p">,</span> <span class="k">const</span> <span class="n">gchar</span> <span class="o">*</span><span class="n">text</span><span class="p">)</span> <span class="err">追加下拉框</span>
+<span class="n">gtk_combo_box_get_active_text</span> <span class="p">(</span><span class="n">GtkComboBox</span> <span class="o">*</span><span class="n">combo_box</span><span class="p">)</span> <span class="err">获得当前下拉框的内容</span>
+</pre></div>
+
+
+<p><em>GtkTreeView</em></p>
+<div class="hlcode"><pre><span class="n">gtk_list_store_new</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">G_TYPE_STRING</span><span class="p">,</span> <span class="n">G_TYPE_BOOLEAN</span><span class="p">);</span> <span class="err">创建</span><span class="n">model</span>
+<span class="n">gtk_tree_model_get_n_columns</span><span class="p">(</span><span class="n">pmodel</span><span class="p">)</span> <span class="err">获取行数</span>
+<span class="n">gtk_tree_view_get_model</span><span class="p">(</span><span class="n">GTK_TREE_VIEW1</span><span class="p">))</span> <span class="err">得到</span><span class="n">TREEVIEW</span><span class="err">的</span><span class="n">model</span>
+<span class="n">gtk_tree_model_get_iter</span> <span class="p">(</span><span class="n">model_iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="err">获取列表指定位置的值（</span><span class="n">DISKS_COL_DEVICE</span><span class="err">）</span>
+</pre></div>
+
+
+<h4 id="gtk_2">gtk 简单组建：</h4>
+<hr />
+<p><em>Combo example</em></p>
+<div class="hlcode"><pre><span class="n">gtk_init</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span> <span class="err">初始化</span>
+<span class="n">target_tbl</span> <span class="o">=</span> <span class="n">gtk_table_new</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">);</span> <span class="err">创建容器</span>
+<span class="n">GtkWidget</span> <span class="o">*</span><span class="n">device_name</span> <span class="o">=</span> <span class="n">gtk_label_new</span> <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="n">value</span><span class="p">));</span> <span class="n">label</span>
+<span class="n">GtkWidget</span> <span class="o">*</span><span class="n">combo</span> <span class="o">=</span> <span class="n">gtk_combo_box_text_new</span><span class="p">();</span>
+    <span class="n">gtk_combo_box_text_append_text</span><span class="p">(</span><span class="n">GTK_COMBO_BOX_TEXT</span><span class="p">(</span><span class="n">combo</span><span class="p">),</span>
+                               <span class="s">&quot;For Test One&quot;</span><span class="p">);</span>
+    <span class="n">gtk_combo_box_text_append_text</span><span class="p">(</span><span class="n">GTK_COMBO_BOX_TEXT</span><span class="p">(</span><span class="n">combo</span><span class="p">),</span>
+                               <span class="s">&quot;For Test two&quot;</span><span class="p">);</span>
+<span class="n">gtk_table_attach_defaults</span><span class="p">(</span><span class="n">GTK_TABLE</span><span class="p">(</span><span class="n">table</span><span class="p">),</span><span class="n">device_name</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="err">布局＆将组建塞入窗口</span>
+<span class="n">gtk_table_attach_defaults</span><span class="p">(</span><span class="n">GTK_TABLE</span><span class="p">(</span><span class="n">table</span><span class="p">),</span><span class="n">combo</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">dialog</span><span class="p">);</span> <span class="n">show</span> <span class="err">窗口</span>
+</pre></div>
+
+
+<p><strong>important</strong>
+    <em>SIGNAL</em></p>
+<div class="hlcode"><pre><span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">G_OBJECT</span> <span class="p">(</span><span class="n">combo</span><span class="p">),</span> <span class="s">&quot;changed&quot;</span><span class="p">,</span><span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">group_change</span><span class="p">),</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="n">G_OBJECT</span> <span class="p">(</span><span class="n">combo</span><span class="p">)</span> <span class="err">绑定</span><span class="n">combo</span><span class="err">组建</span>
+<span class="s">&quot;changed&quot;</span><span class="err">监听组建事件，不同的组建有不同的事件，最好去查下</span><span class="n">API</span>
+<span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">group_change</span><span class="p">)</span> <span class="err">绑定回调函数</span> <span class="n">changed</span><span class="err">时激发函数内事件</span>
+</pre></div>
+
+
+<p><strong>g_signal_connect(instance, detailed_signal, c_handler, data)</strong></p>
+<div class="hlcode"><pre><span class="nx">Api</span> <span class="err">解释：</span>
+        <span class="nx">Connects</span> <span class="nx">a</span> <span class="nx">GCallback</span> <span class="kd">function</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">signal</span> <span class="k">for</span> <span class="nx">a</span> <span class="nx">particular</span> <span class="nx">object</span><span class="p">.</span><span class="nx">The</span> <span class="nx">handler</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">called</span> <span class="nx">before</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">handler</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">signal</span><span class="p">.</span>
+        <span class="nx">instance</span> <span class="o">:</span><span class="nx">the</span> <span class="nx">instance</span> <span class="nx">to</span> <span class="nx">connect</span> <span class="nx">to</span><span class="p">.</span>
+        <span class="nx">detailed_signal</span> <span class="o">:</span><span class="nx">a</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">form</span> <span class="s2">&quot;signal-name::detail&quot;</span><span class="p">.</span>
+        <span class="nx">c_handler</span> <span class="o">:</span><span class="nx">the</span> <span class="nx">GCallback</span> <span class="nx">to</span> <span class="nx">connect</span><span class="p">.</span>
+        <span class="nx">data</span> <span class="o">:</span><span class="nx">data</span> <span class="nx">to</span> <span class="nx">pass</span> <span class="nx">to</span> <span class="nx">c_handler</span> <span class="nx">calls</span><span class="p">.</span>
+        <span class="nx">Returns</span> <span class="o">:</span><span class="nx">the</span> <span class="nx">handler</span> <span class="nx">id</span>
+</pre></div>
+
+
+<p><strong>TreeView</strong></p>
+<blockquote>
+<p>在GTK+中, 使用GtkTreeModel接口和GtkTreeView构件, 可以创建树形或列表控件. 此构件采用了Model/View/Controller设计, 包含4个主要部分:
+<em>Model/View/Controller设计</em>：
+(1) Tree view构件(GtkTreeView)
+(2) 视图列(GtkTreeViewColumn)
+(3) 单元格[cell]呈现器(GtkCellRenderer等)
+(4) 模型接口(GtkTreeModel)</p>
+</blockquote>
+<p><em>创建：</em></p>
+<div class="hlcode"><pre><span class="n">gtk_list_store_new</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">G_TYPE_STRING</span><span class="p">,</span> <span class="n">G_TYPE_BOOLEAN</span><span class="p">);</span> <span class="err">创建</span><span class="n">model</span>
+<span class="n">gtk_tree_store_append</span> <span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="err">取得迭代器</span>
+<span class="n">gtk_tree_store_new</span> <span class="p">(</span><span class="n">disks_store</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span>  
+             <span class="n">DISKS_COL_DEVICE</span><span class="p">,</span> <span class="n">root_disk</span><span class="p">,</span>
+             <span class="n">DISKS_COL_SIZE</span><span class="p">,</span> <span class="n">size_gb</span><span class="p">,</span>
+             <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="err">数据添加到</span><span class="n">model</span> <span class="o">|</span> <span class="n">Iter</span><span class="p">,</span> <span class="err">此迭代器指向数据将要被添加的位置</span>
+<span class="n">disks_col_convert</span> <span class="o">=</span> <span class="n">gtk_cell_renderer_toggle_new</span> <span class="p">();</span>
+<span class="n">gtk_tree_view_insert_column_with_attributes</span> <span class="p">(</span>
+ <span class="n">disks_list</span><span class="p">,</span> <span class="c1">//表头文字  </span>
+ <span class="mi">0</span><span class="p">,</span> <span class="c1">//列标</span>
+ <span class="n">_</span><span class="p">(</span><span class="s">&quot;Convert&quot;</span><span class="p">),</span>
+     <span class="n">disks_col_convert</span><span class="p">,</span> <span class="c1">//cell renderer </span>
+     <span class="s">&quot;active&quot;</span><span class="p">,</span> <span class="n">DISKS_COL_CONVERT</span><span class="p">,</span> <span class="c1">//多个attributes </span>
+     <span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p><em>回调函数里取得(写入)选择行的数据：</em></p>
+<div class="hlcode"><pre><span class="n">gtk_tree_selection_get_selected</span><span class="p">(</span><span class="n">GTK_TREE_SELECTION</span><span class="p">(</span><span class="n">widget</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">model</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">)</span>
+<span class="err">／／获取</span> <span class="n">path</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">gtk_tree_path_new_from_string</span> <span class="p">(</span><span class="n">path_str</span><span class="p">);</span>
+<span class="c1">//根据path获得iter</span>
+    <span class="n">gtk_tree_model_get_iter</span> <span class="p">(</span><span class="n">model_iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
+<span class="err">／／获取列表指定位置的值（</span><span class="n">DISKS_COL_DEVICE</span><span class="err">）</span>
+<span class="n">gtk_tree_model_get</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span> <span class="n">DISKS_COL_DEVICE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="err">／／写入值</span><span class="o">-&gt;</span><span class="err">指定位置</span>
+<span class="n">gtk_list_store_set</span> <span class="p">(</span><span class="n">GTK_LIST_STORE</span> <span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">,</span>
+                  <span class="n">DISKS_COL_MODEL</span><span class="p">,</span> <span class="s">&quot;For Test&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p><em>API</em></p>
+<blockquote>
+<p>void                gtk_tree_store_set                  (GtkTreeStore <em>tree_store,  GtkTreeIter </em>iter, ...);</p>
+<p>Sets the value of one or more cells in the row referenced by iter. The variable argument list should contain integer column numbers, each column number followed by the value to be set. The list is terminated by a -1. For example, to set column 0 with type G_TYPE_STRING to "Foo", you would write gtk_tree_store_set (store, iter, 0, "Foo", -1).</p>
+<p>The value will be referenced by the store if it is a G_TYPE_OBJECT, and it will be copied if it is a G_TYPE_STRING or G_TYPE_BOXED.</p>
+<p>tree_store :A GtkTreeStore
+iter :A valid GtkTreeIter for the row being modified
+... :
+pairs of column number and value, terminated with -1</p>
+</blockquote>
+<h3 id="api">推荐API 工具</h3>
+<div class="hlcode"><pre><span class="n">devhelp</span> <span class="err">需要在</span><span class="n">linux</span><span class="err">下安装软件</span> <span class="err">，方便查看</span>
+<span class="p">(</span><span class="err">下载</span><span class="n">glade</span><span class="err">界面设计</span><span class="p">(</span><span class="n">GTK</span><span class="p">)</span><span class="err">之后</span><span class="n">ubuntu</span><span class="err">中可以搜索到</span><span class="p">)</span>
+</pre></div>
+
+
+<p><em>参考链接</em></p>
+<p><a href="https://developer.gnome.org/references"><em>Gnome 官网api</em></a></p>
+<p><a href="http://blog.csdn.net/crazyingbird/article/details/653119"><em>CSDN BLOG ---&gt; treeView</em></a></p>
+<p><a href="http://blog.csdn.net/liu1164316159/article/details/17678365"><em>CSDN BLOG ---&gt; gtk Box Model</em></a></p>
+<p><a href="http://www.cppblog.com/dfghj44444/archive/2010/06/25/118699.html"><em>遍历treeView</em></a></p>
+<p><a href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=25793640&amp;id=3047846">TreeView Double Click Event</a></p>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2015 .
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>
